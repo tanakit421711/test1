@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frontend</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p> สวัดดี {{ name }} {{ lastname }}</p>
+        <p>ขณะนี้อายุ {{ year - birth }}</p>
+        <hr>
+        <p>{{ message2 }}</p>
+        <button v-on:click="reMessage">click</button>
+        <hr>
+        <p v-if="user === 'admin' || user === 'user'">3RMUL</p>
+        <p v-if="user === 'admin'">2RMUL</p>
+        <p v-if="user === 'admin'">1RMUL</p>
+        <hr>
+        <p>{{ message }}</p>
+        <input v-model="message">
+        <hr>
+        <p v-for="todo in todos">{{ todo.text }}</p>
+        <hr>
+        <p>{{ todos[0].text }}</p>
+        <p>{{ todos[1].text }}</p>
+        <p>{{ todos[2].text }}</p>
+        <p>{{ todos[3].text }}</p>
+        <p>{{ todos[4].text }}</p>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data: {
+                message2: "student",
+                user: "user",
+                message:'test vue',
+                name: 'tanakit',
+                lastname:'keawpinit',
+                birth: 2000,
+                year:moment().format('yyyy'),
+                todos:[
+                    {text: 'HTML'},
+                    {text: 'CSS'},
+                    {text: 'JAVASCRIPT'},
+                    {text: 'JAVA'},
+                    {text: 'PHP'} ,
+                    {text: 'PYTHON'}
+                ]
+            },
+            methods: {
+                reMessage: function(){
+                    //console.log("test function reMessage");
+                    //this.message2 = this.message2.toUpperCase();
+                    this.message2 = this.message2.split('').reverse().join('');
+                }
+            }
+        })
+    </script>
+   
+</body>
+</html>
